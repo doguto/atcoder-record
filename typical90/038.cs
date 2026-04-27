@@ -1,11 +1,25 @@
 using System.Text;
 
+
 var fs = new FastScanner();
 var fw = new FastWriter();
 
 // Start
 
+var A = fs.LongLong();
+var B = fs.LongLong();
 
+var g = KMath.Gcd(A, B);
+var result = A * B / g;
+
+if (result > 1000000000000000000)
+{
+    fw.SetLine("Large");
+}
+else
+{
+    fw.SetLine((A / g) * B);
+}
 
 // End
 
