@@ -1,7 +1,20 @@
+using System.Text;
+
+var fs = new FastScanner();
+var fw = new FastWriter();
+
+// Start
 
 
 
+// End
+
+fw.Confirm();
+
+
+//
 // Utility
+//
 
 class FastScanner
 {
@@ -67,4 +80,40 @@ class FastScanner
     public double Double() => double.Parse(Str());
     public int[] IntArr(int n) { var a = new int[n]; for (int i = 0; i < n; i++) a[i] = Int(); return a; }
     public long[] LongArr(int n) { var a = new long[n]; for (int i = 0; i < n; i++) a[i] = Long(); return a; }
+}
+
+class FastWriter
+{
+    readonly StreamWriter sw;
+
+    public FastWriter()
+    {
+        sw = new StreamWriter(Console.OpenStandardOutput()){AutoFlush = false};
+        Console.SetOut(sw);
+    }
+
+    public void Set(string s)
+    {
+        Console.Write(s);
+    }
+
+    public void Set(int n)
+    {
+        Console.Write(n);
+    }
+
+    public void SetLine(string s)
+    {
+        Console.WriteLine(s);
+    }
+
+    public void SetLine(int n)
+    {
+        Console.WriteLine(n);
+    }
+
+    public void Confirm()
+    {
+        Console.Out.Flush();
+    }
 }
