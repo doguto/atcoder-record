@@ -7,6 +7,7 @@ public:
     // 頂点情報のみ受け取る
     UnionFind(int n) {
         parents = std::vector<int>(n, -1);
+        sizes = std::vector<int>(n, 1);
     }
 
     int root(int i) {
@@ -15,9 +16,13 @@ public:
     }
 
     // i が所属する部分木の大きさ
-    int size(int i) {
+    int rootSize(int i) {
         // This is Ilegal
-        return -parents[root(i)];
+        return sizes[root(i)];
+    }
+
+    int size(int i) {
+        return sizes[i];
     }
 
     // true: 閉路が出来ない, false: 閉路が出来る
@@ -31,13 +36,13 @@ public:
             std::swap(a, b);
         }
 
-        // Size の更新
-        parents[a] += parents[b];
+        // Size の更新. root に接続することが保証されている
+        sizes[a] += sizes[b];
         parents[b] = a;
         return true;
     }
 
-    bool isConnetct(int i, int j) {
+    bool isConnect(int i, int j) {
         return root(i) == root(j);
     }
 
@@ -45,4 +50,5 @@ private:
     // 自分が根の時: 負の数で絶対値は木の大きさを示す
     // 正の時: 自分(i)の親を示す
     std::vector<int> parents;
+    std::vector<int> sizes;
 };

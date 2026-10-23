@@ -40,7 +40,7 @@ public:
         return true;
     }
 
-    bool isConnetct(int i, int j) {
+    bool isConnect(int i, int j) {
         return root(i) == root(j);
     }
 
@@ -67,7 +67,7 @@ int main() {
             uf.connect(a, b);
         } else {
             // 判定
-            string answer = uf.isConnetct(a, b)? "Yes" : "No";
+            string answer = uf.isConnect(a, b)? "Yes" : "No";
             cout << answer << endl;
         }
     }
